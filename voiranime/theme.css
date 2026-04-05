@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           Voiranime Dark/Sombre Immersif
-@namespace      github.com/yolanare/user-styles/tree/main/voireanime
+@namespace      github.com/yolanare/user-styles/tree/main/voiranime
 @version        1.6.0
 @description    Thème sombre immersif et complet qui suit la charte graphique de Voiranime.
 @author         yolan.design
@@ -16,7 +16,7 @@
         background-color: #212027 !important;
         /*background: linear-gradient(to right, #1a1920 20%,#2e2d34);*/
     }
-    
+
     footer,
     .btn-link:not(:hover), .chapter:not(:hover), .open-search-main-menu:not(:hover),
     .nextpostslink:not(:hover), .previouspostslink:not(:hover),
@@ -49,17 +49,17 @@
     .breadcrumb > li::before {
         color: #777 !important;
     }
-    
+
     .c-blog__heading.style-3 > *,
     .wp-pagenavi > a:hover {
         color: #fff !important;
     }
-    
+
     a:hover, .c-tabs-content .active a, .c-blog__heading *:not([class^="h"]) .icon,
     div > button:hover {
         color: #7289da !important;
     }
-    
+
     .c-tabs-content a::after,
     .h4 .ion-checkmark, .h4 .ion-ios-star,
     .c-blog__heading.style-3 {
@@ -73,7 +73,7 @@
         border-top-color: #7289da !important;
         border-bottom-color: #7289da !important;
     }
-    
+
     footer,
     .btn-link:not(:hover), .open-search-main-menu:not(:hover),
     .nextpostslink:not(:hover), .previouspostslink:not(:hover),
@@ -84,7 +84,7 @@
     .site-header .c-sub-header-nav.sticky {
         box-shadow: none;
     }
-    
+
     body.manga-page .page-content-listing.single-page .listing-chapters_wrap > ul.main.version-chap li::after, .shortcode-manga-chapters .listing-chapters_wrap > ul.main.version-chap li::after {
         background-color: #2e2d34 !important;
     }
@@ -94,18 +94,18 @@
     .c-genres-block .btn {
         border-color: #aaa !important;
     }
-    
+
     *[style^="background-image: url(https://v"][style*="voir"][style*=".com/"] {
         filter: invert(1) hue-rotate(180deg);
     }
     *[style^="background-image: url(https://v"][style*="voir"][style*=".com/"] > * {
         filter: invert(1) hue-rotate(180deg);
     }
-    
+
     input:not([type="submit"]):not([name*="phrase"]), textarea, select {
         filter: invert(1) hue-rotate(180deg) contrast(1.05);
     }
-    
+
     .asp_r, .asp_m {
         filter: invert(1) hue-rotate(180deg) contrast(0.825) brightness(1.175);
     }
@@ -131,7 +131,7 @@
     .probox svg {
         transition: fill 0.2s ease, background-color 0.2s ease;
     }
-    
+
     .open-search-main-menu i::before {
         transform: rotateZ(0deg);
         transition: 0.5s ease !important;
@@ -140,15 +140,15 @@
         transform: rotateZ(360deg) !important;
         color: #7289da !important;
     }
-    
-    
+
+
     .btn-link,
     .wp-pagenavi > *:not(.current) {
         border-radius: 6px !important;
         transition: 0.2s ease !important;
         transition-property: color, background-color !important;
     }
-    
+
     /*- page navigation -*/
     .wp-pagenavi > * {
         padding: 4px 8px !important;

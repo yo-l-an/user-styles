@@ -10,7 +10,7 @@ free to use and edit, but just make sure to mention me, that's all, thanks :)
 
 ## [Voiranime.com](https://userstyles.world/style/16476/voiranime-com-dark-theme)
 
-| ![Voiranime Home](./voireanime/voiranime-home.png) | ![Voiranime Player](./voireanime/voiranime-player.png) |
+| ![Voiranime Home](./voiranime/voiranime-home.png) | ![Voiranime Player](./voiranime/voiranime-player.png) |
 :-:|:-:
 | home | player |
 
