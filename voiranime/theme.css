@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Voiranime Dark/Sombre Immersif
 @namespace      github.com/yolanare/user-styles/tree/main/voiranime
-@version        1.6.1
+@version        1.7.0
 @description    Thème sombre immersif et complet qui suit la charte graphique de Voiranime.
 @author         yolan.design
 @homepageURL    https://github.com/yolanare/user-styles
@@ -9,11 +9,11 @@
 @license        MIT
 ==/UserStyle== */
 
-@-moz-document regexp("^https?:\\/\\/(.+\\.)?voir-?anime\\..+$") {
+@-moz-document regexp("^https?:\\/\\/(.+\\.)?voir-?anime\\..+$"), regexp("^https?:\\/\\/(.+\\.)?voir-?drama\\..+$") {
     /*- bg -*/
     body, *[style*="background-color:#fcfcfc"], .summary_content, .summary_image {
-        background: #212027 !important;
-        background-color: #212027 !important;
+        background: #19181f !important;
+        background-color: #19181f !important;
         /*background: linear-gradient(to right, #1a1920 20%,#2e2d34);*/
     }
 
@@ -23,7 +23,8 @@
     .site-header .c-sub-header-nav,
     .site-header .c-sub-header-nav .sub-menu,
     .search-wrap .post-content,
-    .wp-pagenavi > a:not(:hover) {
+    .wp-pagenavi > a:not(:hover),
+    #btn-read-first:not(:hover), #btn-read-last:not(:hover) {
         background: #100f17 !important;
         background-color: #100f17 !important;
     }
@@ -47,7 +48,7 @@
     .asp_res_text,
     .breadcrumb > li > a:not(:hover),
     .breadcrumb > li::before {
-        color: #777 !important;
+        color: #58585f !important;
     }
 
     .c-blog__heading.style-3 > *,
@@ -95,10 +96,8 @@
         border-color: #aaa !important;
     }
 
-    *[style^="background-image: url(https://v"][style*="voir"][style*=".com/"] {
-        filter: invert(1) hue-rotate(180deg);
-    }
-    *[style^="background-image: url(https://v"][style*="voir"][style*=".com/"] > * {
+    *[style^="background-image: url(https://"][style*="voir"],
+    *[style^="background-image: url(https://"][style*="voir"] > * {
         filter: invert(1) hue-rotate(180deg);
     }
 
