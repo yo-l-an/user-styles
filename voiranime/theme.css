@@ -9,7 +9,7 @@
 @license        MIT
 ==/UserStyle== */
 
-@-moz-document regexp("^https?:\\/\\/(.+\\.)?voiranime\\..+$") {
+@-moz-document regexp("^https?:\\/\\/(.+\\.)?voir-?anime\\..+$") {
     /*- bg -*/
     body, *[style*="background-color:#fcfcfc"], .summary_content, .summary_image {
         background: #212027 !important;
