@@ -8,11 +8,11 @@ free to use and edit, but just make sure to mention me, that's all, thanks :)
 
 [See on my UserStyles.world profile](https://userstyles.world/user/yolanare)
 
-## [Voiranime.com](https://userstyles.world/style/16476/voiranime-com-dark-theme)
+## [Voiranime](https://userstyles.world/style/16476/voiranime-darksombre-immersif)
 
-| ![Voiranime Home](./voiranime/voiranime-home.png) | ![Voiranime Player](./voiranime/voiranime-player.png) |
+| feed | player |
 :-:|:-:
-| home | player |
+| ![Voiranime Home](./voiranime/voiranime-home.png) | ![Voiranime Player](./voiranime/voiranime-player.png) |
 
 <br>
 
