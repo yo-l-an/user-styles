@@ -1,0 +1,15 @@
+{
+  "name": "preview-layout",
+  "displayName": "Preview layout (local only)",
+  "description": "Opens sample files in a 2x2 editor grid when the theme preview starts. Loaded by scripts/preview.js, never published.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "private": true,
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ]
+}

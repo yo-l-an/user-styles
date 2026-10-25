@@ -28,6 +28,7 @@ const args = [
   `--user-data-dir=${PROFILE}`,
   `--extensions-dir=${path.join(PROFILE, 'extensions')}`,
   `--extensionDevelopmentPath=${ROOT}`,
+  `--extensionDevelopmentPath=${path.join(__dirname, 'preview-layout')}`, // opens the 2x2 editor grid
   SAMPLE,
 ];
 // "code" is a .cmd script on Windows, which needs a shell: pass one command line,

@@ -1,0 +1,6 @@
+{
+  "topLeft": ["README.md"],
+  "bottomLeft": ["web/index.html"],
+  "topRight": ["web/scripts/app.js", "web/scripts/api/client.js"],
+  "bottomRight": ["web/styles/main.css", "docker-compose.yml", "tools/config/settings.lua"]
+}
