@@ -1099,7 +1099,7 @@ module.exports = [
           "keyword.other.unit",
           "keyword.other"
       ],
-      settings: { foreground: c.orange66b }
+      settings: { foreground: c.orange66 }
   },
   {   name: "Booleans & other constants",
       scope: [
@@ -1201,7 +1201,7 @@ module.exports = [
       "punctuation.definition.constant.css",
       "constant.other.color.rgb-value.hex.css"
     ],
-    settings: { foreground: c.orange66c }
+    settings: { foreground: c.orange66 }
   },
   {
     name: "CSS - Constant property values color",
@@ -1257,7 +1257,7 @@ module.exports = [
       scope: [
           "entity.other.attribute-name.pseudo-element.css"
       ],
-      settings: { foreground: c.teal60b, fontStyle: "italic bold" }
+      settings: { foreground: c.teal60, fontStyle: "italic bold" }
   },
   {   name: "SCSS - Tag &",
       scope: [
@@ -1320,7 +1320,7 @@ module.exports = [
           "variable.other.object.property.js",
           "variable.other.object.property.ts"
       ],
-      settings: { foreground: c.teal60b }
+      settings: { foreground: c.teal60 }
   },
   {   name: "JS - Object property call (last highlighted)",
       scope: [
