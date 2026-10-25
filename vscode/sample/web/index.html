@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample dashboard</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    body { margin: 0; }
+  </style>
+</head>
+<body class="theme-dark" data-page="dashboard">
+  <!-- main navigation -->
+  <header id="top" class="site-header">
+    <nav aria-label="Main">
+      <a href="/" class="logo"><img src="assets/logo.png" alt="Sample" width=32 height=32></a>
+      <ul class="nav-list">
+        <li><a href="/projects" class="is-active">Projects</a></li>
+        <li><a href="/settings" target=_blank>Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cards" x-data="{ open: false }" hx-get="/api/cards">
+      <article class="card card--highlighted">
+        <h2>Monthly usage</h2>
+        <p>Usage went up <strong>12&nbsp;%</strong> since <time datetime="2026-09-01">September</time>.</p>
+        <button type="button" class="btn btn-primary" disabled>Export</button>
+      </article>
+    </section>
+
+    <form action="/search" method="get">
+      <label for="q">Search</label>
+      <input id="q" name="q" type="search" placeholder="Find a project" required>
+      <select name="sort">
+        <option value="recent" selected>Most recent</option>
+        <option value="name">Name</option>
+      </select>
+    </form>
+  </main>
+
+  <custom-footer theme="dark"></custom-footer>
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

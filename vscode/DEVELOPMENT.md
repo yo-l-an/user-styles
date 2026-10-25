@@ -47,11 +47,21 @@ Deleting a folder removes its theme from `themes/` and `package.json` on the nex
 
 ## Previewing
 
-Run `npm run preview` from `vscode/`. It builds the themes, opens a preview window with them loaded, and then keeps watching `src/`. Stop the watcher with `Ctrl+C`. The window stays open.
+Run `npm run preview` from `vscode/`. It builds the themes, opens the `sample/` folder in a preview window with the themes loaded, and then keeps watching `src/`. Stop the watcher with `Ctrl+C`. The window stays open.
 
 The preview window has its own profile in `.preview/` (ignored by git and left out of the package), with no other extensions. The first time, it opens on the first theme. After that it remembers whichever theme you pick with **Preferences: Color Theme**. To start over, delete `.preview/`.
 
 If a save doesn't show up, run **Developer: Reload Window** in the preview window.
+
+`sample/` is a fake project for checking syntax colors. It has one file or more per language the theme colors, in nested folders so the explorer has a real tree. It isn't part of the published package. Add a file there when you work on a new language.
+
+| folder | languages |
+| --- | --- |
+| `sample/` | Markdown, JSON, JSON with comments, YAML, Dockerfile, Makefile |
+| `sample/web/` | HTML, CSS, SCSS, JavaScript, TypeScript, TSX |
+| `sample/server/` | Go |
+| `sample/tools/` | shell, Lua, Python |
+| `sample/site/` | PHP (templates mixed with HTML, and classes) |
 
 ## Cleaning up colors
 

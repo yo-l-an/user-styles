@@ -1,4 +1,4 @@
-// Opens a VS Code window with the themes loaded from this folder, without a debugger
+// Opens sample/ in a VS Code window with the themes loaded from this folder, without a debugger
 // (with F5's debugger attached, the extension host crashes and the window closes).
 // It uses its own profile in .preview/, so your settings and extensions stay out of it,
 // and the theme you pick there is remembered.
@@ -9,6 +9,7 @@ const { spawn } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
 const PROFILE = path.join(ROOT, '.preview');
+const SAMPLE = path.join(ROOT, 'sample'); // fake project with one file per language
 const settingsFile = path.join(PROFILE, 'User', 'settings.json');
 
 if (!fs.existsSync(settingsFile)) {
@@ -21,11 +22,13 @@ if (!fs.existsSync(settingsFile)) {
 const env = { ...process.env };
 delete env.ELECTRON_RUN_AS_NODE; // set when run from inside VS Code; it would start Code as plain Node
 
+// only the folder: with files added (or --new-window), the development window opens without the folder.
+// The editors you open in sample/ are restored on the next launch anyway.
 const args = [
-  '--new-window',
   `--user-data-dir=${PROFILE}`,
   `--extensions-dir=${path.join(PROFILE, 'extensions')}`,
   `--extensionDevelopmentPath=${ROOT}`,
+  SAMPLE,
 ];
 // "code" is a .cmd script on Windows, which needs a shell: pass one command line,
 // quoting the arguments but not "code" itself (code.cmd breaks when its own name is quoted)

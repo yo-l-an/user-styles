@@ -1,0 +1,46 @@
+@use "sass:math";
+
+$btn-padding: 0.5rem 1rem !default;
+$btn-colors: (
+  "primary": #254385,
+  "danger": #db4b4b,
+);
+
+@mixin focus-ring($color: currentColor) {
+  outline: 2px solid $color;
+  outline-offset: 2px;
+}
+
+@function rem($px) {
+  @return math.div($px, 16px) * 1rem;
+}
+
+.btn {
+  padding: $btn-padding;
+  border-radius: rem(6px);
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &[disabled],
+  &[aria-busy="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  @each $name, $color in $btn-colors {
+    &-#{$name} {
+      background: $color;
+      color: #fff;
+    }
+  }
+
+  .icon + & {
+    margin-left: 0.25rem;
+  }
+}

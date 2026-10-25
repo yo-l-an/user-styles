@@ -1,0 +1,26 @@
+{
+  "name": "sample-project",
+  "version": "0.3.1",
+  "private": true,
+  "description": "Fake project used to preview the theme",
+  "scripts": {
+    "dev": "vite --port 5173",
+    "build": "tsc && vite build",
+    "lint": "eslint web --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "browserslist": ["last 2 versions", "not dead"],
+  "retries": 3,
+  "debug": false,
+  "cache": null
+}

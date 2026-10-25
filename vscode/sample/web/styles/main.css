@@ -1,0 +1,58 @@
+@import url("./base/reset.css");
+
+/* Design tokens */
+:root {
+  --color-bg: #1b1b25;
+  --color-text: #a9b1d6;
+  --color-accent: rgb(37 67 133 / 80%);
+  --radius: 0.5rem;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: 400 15px/1.5 "Inter", system-ui, sans-serif;
+}
+
+#top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-list > li + li {
+  margin-left: calc(var(--radius) * 2);
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
+
+.card::before {
+  content: "";
+  inset: 0;
+}
+
+.card--highlighted {
+  border: 1px solid #fcd297;
+  box-shadow: var(--shadow) !important;
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+input[type="search"]:not(:placeholder-shown) {
+  outline: 2px solid var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
