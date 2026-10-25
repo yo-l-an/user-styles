@@ -7,11 +7,17 @@ Each theme is a folder in `src/themes/<id>/`:
 | file | what it holds |
 | --- | --- |
 | `theme.js` | name (shown in the theme picker) and type (`dark`, `light`, `hcDark`, `hcLight`) |
-| `palette.js` | every color, by name |
+| `palette.js` | every color by name (`colors`), the opacity scale (`o`), and colors with opacity reused in several places (`tokens`) |
 | `ui.js` | workbench colors → palette names |
 | `syntax.js` | TextMate rules → palette names (order matters, later rules win) |
 
-`src/helpers.js` is shared by all themes. `alpha()` adds transparency, as a percent (`alpha(c.accent, 38.4)`) or as a hex byte written as a string (`alpha(c.accent, '0x62')`).
+In `ui.js` and `syntax.js`:
+
+- `c.bg` is a solid color.
+- `c.selectionBg` is a token: a color with opacity, defined once in `palette.js`.
+- `alpha(c.slate45, o.soft)` is a one-off transparent color, on the opacity scale.
+
+`alpha()` is in `src/helpers.js`, shared by all themes. It takes a percent (`o.soft`, or a number like `38.4`) or a hex byte written as a string (`'0x62'`). Stick to the `o` scale where you can.
 
 Each theme is built to `themes/<id>-color-theme.json`. The build also keeps `contributes.themes` in `package.json` up to date, so never edit that list by hand.
 
@@ -23,7 +29,7 @@ Requires Node.js. There are no dependencies to install.
 | --- | --- |
 | `npm run build` | builds all themes once |
 | `npm run watch` | rebuilds on every save in `src/` |
-| `npm run report` | for each theme, lists colors with the same value, near-duplicates and one-off colors |
+| `npm run report` | for each theme: usage of each opacity level and token, repeated transparent colors that could become a token, colors with the same value, near-duplicates, one-off colors, and anything unused |
 | `npm run report -- <id>` | the same, for one theme (add `--near=3` to widen the near-duplicate search) |
 
 `vsce package` and `vsce publish` run the build first (`vscode:prepublish`).

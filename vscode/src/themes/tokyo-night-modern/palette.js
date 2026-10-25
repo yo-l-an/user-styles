@@ -1,8 +1,12 @@
-// Every color the theme uses. Reference them as c.<name> in ui.js and syntax.js.
-// Families are sorted dark to light, so near-duplicates sit next to each other.
-// Run `npm run report` to list duplicates and one-off colors.
+const { alpha } = require('../../helpers');
 
-module.exports = {
+// Every color the theme uses. In ui.js and syntax.js:
+//   c.<name>                     a solid color, or a color + opacity token below
+//   alpha(c.<name>, o.<level>)   a one-off transparent color
+// Families are sorted dark to light, so near-duplicates sit next to each other.
+// Run `npm run report` to list duplicates, one-off colors and pairs worth a token.
+
+const colors = {
   none: '#00000000',
 
   // gray
@@ -186,3 +190,36 @@ module.exports = {
   magenta: '#bb9af7',
   purple80: '#c099ff',
 };
+
+// opacity scale, in percent
+const o = {
+  faint:    6,
+  subtle:   10,
+  soft:     14,
+  light:    20,
+  medium:   26,
+  moderate: 33,
+  strong:   40,
+  bold:     55,
+  heavy:    67,
+  dense:    80,
+};
+
+// colors with opacity, reused in several places
+const tokens = {
+  border:           alpha(colors.dark3, o.medium),     // borders on inputs, checkboxes, key labels
+  borderFocus:      alpha(colors.dark3, o.light),      // focus ring, resize handles
+  selectionBg:      alpha(colors.selection, o.strong), // text selection, editor and terminal
+  hoverBg:          alpha(colors.blue58, o.subtle),    // toolbar and toggle hover
+  findMatchBg:      alpha(colors.orange37, o.strong),  // other find / peek matches
+  rangeBg:          alpha(colors.slate57b, o.soft),    // highlighted ranges
+  wordHighlightBg:  alpha(colors.slate57b, o.light),   // same word / same selection
+  rulerMark:        alpha(colors.fgDark, o.medium),    // overview ruler marks
+  diffInsertedLine: alpha(colors.green27, o.soft),     // diff: inserted lines
+  diffRemovedLine:  alpha(colors.red27, o.medium),     // diff: removed lines
+  mergeCurrent:     alpha(colors.green2, o.soft),      // merge: current change
+  conflict:         alpha(colors.yellow, o.dense),     // merge conflicts
+  codeFence:        alpha(colors.black, o.moderate),   // markdown fenced code
+};
+
+module.exports = { c: { ...colors, ...tokens }, o, colors, tokens };

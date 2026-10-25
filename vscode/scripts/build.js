@@ -31,8 +31,11 @@ function load(id) {
   return { id, meta: req('theme.js'), palette: req('palette.js'), ui: req('ui.js'), syntax: req('syntax.js') };
 }
 
-function validate({ id, meta, ui, syntax }) {
+function validate({ id, meta, palette, ui, syntax }) {
   const errors = [];
+  for (const name of Object.keys(palette.tokens || {})) {
+    if (name in palette.colors) errors.push(`palette.js: "${name}" is both a color and a token`);
+  }
   if (!meta.name) errors.push('theme.js: missing name');
   if (!UI_THEME[meta.type]) errors.push(`theme.js: type must be one of ${Object.keys(UI_THEME).join(', ')}, got ${meta.type}`);
   for (const [key, value] of Object.entries(ui)) {
@@ -115,19 +118,38 @@ function build() {
   return themes;
 }
 
-// usage counts per palette name, from the built values
-function usage({ palette, ui, syntax }) {
-  const byHex = {};
-  for (const [name, hex] of Object.entries(palette)) (byHex[hex.toLowerCase()] ??= []).push(name);
-  const counts = Object.fromEntries(Object.keys(palette).map(n => [n, 0]));
-  const values = [...Object.values(ui), ...syntax.flatMap(r => [r.settings?.foreground, r.settings?.background])];
-  for (const v of values) {
-    if (!v) continue;
-    const hex = v.toLowerCase();
-    const names = byHex[hex] || byHex[hex.slice(0, 7)] || [];
-    for (const n of names) counts[n]++;
+const outputValues = ({ ui, syntax }) =>
+  [...Object.values(ui), ...syntax.flatMap(r => [r.settings?.foreground, r.settings?.background])]
+    .filter(Boolean)
+    .map(v => v.toLowerCase());
+
+// how often each palette entry ends up in the built theme
+// (a solid color counts every use, including through tokens and alpha())
+function usage(theme) {
+  const { colors, tokens = {}, o = {} } = theme.palette;
+  const values = outputValues(theme);
+  const count = (match) => values.filter(match).length;
+  const alphaByte = (pct) => Math.round((pct / 100) * 255).toString(16).padStart(2, '0');
+  return {
+    colors: Object.fromEntries(Object.entries(colors).map(([n, h]) => [n, count(v => v.slice(0, 7) === h.toLowerCase())])),
+    tokens: Object.fromEntries(Object.entries(tokens).map(([n, h]) => [n, count(v => v === h.toLowerCase())])),
+    opacity: Object.fromEntries(Object.entries(o).map(([n, pct]) => [n, count(v => v.length === 9 && v.slice(7) === alphaByte(pct))])),
+  };
+}
+
+// transparent values used 2+ times that have no token yet
+function tokenCandidates(theme) {
+  const { colors, tokens = {}, o = {} } = theme.palette;
+  const tokenHex = new Set(Object.values(tokens).map(h => h.toLowerCase()));
+  const colorName = Object.fromEntries(Object.entries(colors).map(([n, h]) => [h.toLowerCase(), n]));
+  const levelName = Object.fromEntries(Object.entries(o).map(([n, pct]) => [Math.round((pct / 100) * 255).toString(16).padStart(2, '0'), n]));
+  const seen = {};
+  for (const v of outputValues(theme)) {
+    if (v.length === 9 && !v.endsWith('00') && !tokenHex.has(v)) seen[v] = (seen[v] || 0) + 1;
   }
-  return { counts, byHex };
+  return Object.entries(seen)
+    .filter(([, n]) => n > 1)
+    .map(([v, n]) => `alpha(c.${colorName[v.slice(0, 7)] || v.slice(0, 7)}, ${levelName[v.slice(7)] ? 'o.' + levelName[v.slice(7)] : `'0x${v.slice(7)}'`})  ${v}  x${n}`);
 }
 
 function lab(hex) {
@@ -142,12 +164,19 @@ function lab(hex) {
 
 // threshold: CIE76 distance under which two colors count as near-duplicates (~2.3 is barely noticeable)
 function report(theme, threshold) {
-  const { counts, byHex } = usage(theme);
-  const entries = Object.entries(theme.palette).filter(([n]) => n !== 'none');
+  const counts = usage(theme);
+  const entries = Object.entries(theme.palette.colors).filter(([n]) => n !== 'none');
 
-  const unused = entries.filter(([n]) => !counts[n]).map(([n]) => n);
-  const once = entries.filter(([n]) => counts[n] === 1).map(([n, h]) => `${n} ${h}`);
+  const byHex = {};
+  for (const [name, hex] of entries) (byHex[hex.toLowerCase()] ??= []).push(name);
   const dupes = Object.values(byHex).filter(names => names.length > 1);
+  const once = entries.filter(([n]) => counts.colors[n] === 1).map(([n, h]) => `${n} ${h}`);
+  const unused = [
+    ...entries.filter(([n]) => !counts.colors[n]).map(([n]) => `c.${n}`),
+    ...Object.keys(counts.tokens).filter(n => !counts.tokens[n]).map(n => `c.${n} (token)`),
+    ...Object.keys(counts.opacity).filter(n => !counts.opacity[n]).map(n => `o.${n}`),
+  ];
+  const candidates = tokenCandidates(theme);
 
   const near = [];
   for (let i = 0; i < entries.length; i++) {
@@ -159,7 +188,12 @@ function report(theme, threshold) {
   }
 
   console.log(`\n== ${theme.meta.name} (${theme.id}) ==`);
-  console.log(`\npalette: ${entries.length} colors\n`);
+  const nTokens = Object.keys(counts.tokens).length, nLevels = Object.keys(counts.opacity).length;
+  console.log(`\npalette: ${entries.length} colors, ${nTokens} tokens, ${nLevels} opacity levels\n`);
+  console.log('opacity levels (uses):\n  ' + Object.entries(theme.palette.o || {}).map(([n, p]) => `${n} ${p}% x${counts.opacity[n]}`).join('\n  '));
+  console.log('\ntokens (uses):\n  ' + Object.entries(counts.tokens).map(([n, k]) => `${n} x${k}`).join('\n  '));
+  console.log(`\nrepeated transparent colors without a token (${candidates.length}):\n  ` + (candidates.join('\n  ') || '-'));
+  console.log('');
   console.log(`same value, different names (${dupes.length}):`);
   for (const names of dupes) console.log('  ' + names.join(' = '));
   console.log(`\nnear-duplicates, hard to tell apart (${near.length}):`);

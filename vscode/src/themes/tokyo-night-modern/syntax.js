@@ -1,4 +1,4 @@
-const c = require('./palette');
+const { c, o } = require('./palette');
 const { alpha } = require('../../helpers');
 
 // TextMate rules. Order matters: when two rules match equally, the later one wins.
@@ -513,14 +513,14 @@ module.exports = [
     name: "Markdown - Raw Block Fenced",
     scope: ["markup.raw.block.fenced.markdown"],
     settings: {
-      foreground: alpha(c.black, 0x50)
+      foreground: c.codeFence
     }
   },
   {
     name: "Markdown - Fenced Bode Block",
     scope: ["punctuation.definition.fenced.markdown"],
     settings: {
-      foreground: alpha(c.black, 0x50)
+      foreground: c.codeFence
     }
   },
   {
