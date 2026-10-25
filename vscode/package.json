@@ -1,0 +1,54 @@
+{
+  "name": "tokyo-night-modern",
+  "displayName": "Tokyo Night Modern",
+  "description": "A deeper, calmer take on Tokyo Night with a darker UI, softer accents and reworked syntax colors for HTML, CSS/SCSS, JS and TS.",
+  "version": "1.0.0",
+  "publisher": "yo-l-an",
+  "author": {
+    "name": "yo-l-an"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yo-l-an/user-styles.git",
+    "directory": "vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/yo-l-an/user-styles/issues"
+  },
+  "homepage": "https://github.com/yo-l-an/user-styles/tree/main/vscode#readme",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "watch": "node scripts/build.js --watch",
+    "report": "node scripts/build.js --report",
+    "vscode:prepublish": "npm run build"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "dark",
+    "dark theme",
+    "tokyo",
+    "tokyo night",
+    "tokyonight"
+  ],
+  "galleryBanner": {
+    "color": "#18181f",
+    "theme": "dark"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Tokyo Night Modern",
+        "uiTheme": "vs-dark",
+        "path": "./themes/tokyo-night-modern-color-theme.json"
+      }
+    ]
+  }
+}
