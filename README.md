@@ -1,14 +1,14 @@
-# yolan's user-styles
+# user-styles
 
-free to use and edit, but just make sure to mention me, that's all, thanks :)
+free to use, please @ me if you make edits
 
 <br>
 
-# web styles
+## web styles
 
-[See on my UserStyles.world profile](https://userstyles.world/user/yolanare)
+Published on [UserStyles.world](https://userstyles.world/user/yolanare)
 
-## [Voiranime](https://userstyles.world/style/16476/voiranime-darksombre-immersif)
+### [Voiranime](https://userstyles.world/style/16476/voiranime-darksombre-immersif)
 
 | feed | player |
 :-:|:-:
