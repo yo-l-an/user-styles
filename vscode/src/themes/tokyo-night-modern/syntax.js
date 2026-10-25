@@ -52,7 +52,7 @@ module.exports = [
       "keyword.operator.assignment"
     ],
     settings: {
-      foreground: c.slate62
+      foreground: c.blue62
     }
   },
   {
@@ -224,7 +224,7 @@ module.exports = [
     name: "Inserted",
     scope: ["markup.inserted"],
     settings: {
-      foreground: c.green73
+      foreground: c.lime73
     }
   },
   {
@@ -280,7 +280,7 @@ module.exports = [
     ],
     settings: {
       fontStyle: "italic",
-      foreground: c.red66
+      foreground: c.rose66
     }
   },
   // JSON Syntax
@@ -414,7 +414,7 @@ module.exports = [
     name: "Markdown - Entity Section",
     scope: ["entity.name.section.markdown"],
     settings: {
-      foreground: c.purple80
+      foreground: c.violet80
     }
   },
   {
@@ -499,7 +499,7 @@ module.exports = [
     name: "Markdown - Link Anchor",
     scope: ["constant.other.reference.link.markdown"],
     settings: {
-      foreground: c.orange71
+      foreground: c.amber71
     }
   },
   {
@@ -531,7 +531,7 @@ module.exports = [
       "punctuation.section.class.end"
     ],
     settings: {
-      foreground: c.teal97
+      foreground: c.cyan97
     }
   },
   {
@@ -563,7 +563,7 @@ module.exports = [
     name: "Markup - Table",
     scope: ["markup.table"],
     settings: {
-      foreground: c.teal97
+      foreground: c.cyan97
     }
   },
   // Typescript & TSX Syntax
@@ -698,7 +698,7 @@ module.exports = [
     name: "Entity Types",
     scope: ["support.type"],
     settings: {
-      foreground: c.cyan77
+      foreground: c.sky77
     }
   },
   {
@@ -766,7 +766,7 @@ module.exports = [
     ],
     settings: {
       fontStyle: "italic",
-      foreground: c.orange71
+      foreground: c.amber71
     }
   },
   {
@@ -1066,11 +1066,11 @@ module.exports = [
   // customizations
   {   name: "Comments",
       scope: ["comment"],
-      settings: { foreground: c.slate46, fontStyle: "italic" }
+      settings: { foreground: c.blue46, fontStyle: "italic" }
   },
   {   name: "Comments punctuation",
       scope: ["punctuation.definition.comment"],
-      settings: { foreground: c.slate46, fontStyle: "" }
+      settings: { foreground: c.blue46, fontStyle: "" }
   },
 
   {   name: "String, Symbols, Inherited Class, Markup Heading",
@@ -1123,7 +1123,7 @@ module.exports = [
           "entity.name.tag.block.any.html",
           "entity.name.tag.inline.any.html"
       ],
-      settings: { foreground: c.red62b }
+      settings: { foreground: c.red62Muted }
   },
   {   name: "HTML - Special Tags",
       scope: [
@@ -1163,7 +1163,7 @@ module.exports = [
       scope: [
           "entity.other.attribute-name.id.css"
       ],
-      settings: { foreground: c.blue74 }
+      settings: { foreground: c.indigo74 }
   },
   {   name: "CSS - Classes",
       scope: [
@@ -1193,7 +1193,7 @@ module.exports = [
 
       "support.type.property-name.css"
     ],
-    settings: { foreground: c.yellow69 }
+    settings: { foreground: c.amber69 }
   },
   {
     name: "CSS - Constant numeric values color",
@@ -1286,11 +1286,11 @@ module.exports = [
   },
   {   name: "JS - Called functions",
       scope: ["meta.function-call entity.name.function"],
-      settings: { foreground: c.yellow69, fontStyle: "" }
+      settings: { foreground: c.amber69, fontStyle: "" }
   },
   {   name: "JS - Function definitions",
       scope: ["entity.name.function"],
-      settings: { foreground: c.purple75b, fontStyle: "bold italic" }
+      settings: { foreground: c.purple75Vivid, fontStyle: "bold italic" }
   },
   {   name: "JS - Function definitions keyword",
       scope: ["meta.function storage.type.function"],
