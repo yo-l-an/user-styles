@@ -20,6 +20,7 @@
   "scripts": {
     "build": "node scripts/build.js",
     "watch": "node scripts/build.js --watch",
+    "preview": "npm run build && node scripts/preview.js && npm run watch",
     "report": "node scripts/build.js --report",
     "vscode:prepublish": "npm run build"
   },

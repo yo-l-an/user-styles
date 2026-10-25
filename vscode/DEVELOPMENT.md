@@ -29,6 +29,7 @@ Requires Node.js. There are no dependencies to install.
 | --- | --- |
 | `npm run build` | builds all themes once |
 | `npm run watch` | rebuilds on every save in `src/` |
+| `npm run preview` | builds, opens a preview window, then watches (see [Previewing](#previewing)) |
 | `npm run report` | for each theme: usage of each opacity level and token, repeated transparent colors that could become a token, colors with the same value, near-duplicates, one-off colors, and anything unused |
 | `npm run report -- <id>` | the same, for one theme (add `--near=3` to widen the near-duplicate search) |
 
@@ -46,7 +47,11 @@ Deleting a folder removes its theme from `themes/` and `package.json` on the nex
 
 ## Previewing
 
-Run `npm run watch`, press F5 to open an Extension Development Host window, and select the theme there. If a save doesn't show up, run **Developer: Reload Window** in that window.
+Run `npm run preview` from `vscode/`. It builds the themes, opens a preview window with them loaded, and then keeps watching `src/`. Stop the watcher with `Ctrl+C`. The window stays open.
+
+The preview window has its own profile in `.preview/` (ignored by git and left out of the package), with no other extensions. The first time, it opens on the first theme. After that it remembers whichever theme you pick with **Preferences: Color Theme**. To start over, delete `.preview/`.
+
+If a save doesn't show up, run **Developer: Reload Window** in the preview window.
 
 ## Cleaning up colors
 

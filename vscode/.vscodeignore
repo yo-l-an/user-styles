@@ -1,4 +1,5 @@
 .vscode/**
+.preview/**
 src/**
 scripts/**
 DEVELOPMENT.md
