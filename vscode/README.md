@@ -4,7 +4,7 @@ A darker, calmer take on Tokyo Night for VS Code.
 
 Tokyo Night Modern keeps the familiar Tokyo Night palette but gives the workbench deep ink backgrounds, quieter borders and one blue accent used everywhere. The syntax colors have also been reworked to make HTML, CSS/SCSS, JavaScript and TypeScript easier to read at a glance.
 
-<!-- screenshot: ![Tokyo Night Modern](images/screenshot.png) -->
+![Tokyo Night Modern](./src/themes/tokyo-night-modern/img/main.png)
 
 ### Credits
 
