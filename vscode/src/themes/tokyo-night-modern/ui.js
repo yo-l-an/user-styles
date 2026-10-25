@@ -25,6 +25,7 @@ module.exports = {
   "titleBar.inactiveForeground": c.slate59,
   "titleBar.activeForeground": c.slate50,
   "panelTitle.activeBorder": c.white,
+  "modernSash.gripForeground": c.none,
 
   "editorGroup.dropBackground": alpha(c.bgLine, o.strong),
   "sideBar.dropBackground": c.bgHighlight,

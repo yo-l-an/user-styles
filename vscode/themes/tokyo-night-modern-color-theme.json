@@ -22,6 +22,7 @@
     "titleBar.inactiveForeground": "#8689a5",
     "titleBar.activeForeground": "#6f7492",
     "panelTitle.activeBorder": "#ffffff",
+    "modernSash.gripForeground": "#00000000",
     "editorGroup.dropBackground": "#292e4266",
     "sideBar.dropBackground": "#1f2335",
     "list.dropBackground": "#1f2335",
